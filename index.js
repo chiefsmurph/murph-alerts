@@ -1,13 +1,8 @@
 
 const hitRCP = require('./hitRCP');
 let lastHit;
-
+const alertChange = require('./alertChange');
 const objEqual = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
-
-
-const alertHit = () => {
-    console.log('FIRE FIRE FIRE IN THE HOLE!');
-}
 
 (async () => {
 
@@ -17,9 +12,10 @@ const alertHit = () => {
         console.log(new Date().toLocaleTimeString());
         console.log(hit);
         console.log();
-        if (lastHit && !objEqual(hit, lastHit)) {
-            alertHit();
+        if (!objEqual(hit, lastHit)) {
+            alertChange(hit, lastHit);
         }
+        lastHit = hit;
 
      }, 3000)
 
