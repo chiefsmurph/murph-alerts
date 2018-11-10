@@ -1,0 +1,23 @@
+{
+  "name": "my-brothers-pipedream",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/chiefsmurph/my-brothers-pipedream.git",
+  "author": "John Murphy <chiefsmurph@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chiefsmurph/my-brothers-pipedream/issues"
+  },
+  "homepage": "https://github.com/chiefsmurph/my-brothers-pipedream#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "puppeteer": "^1.10.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "textmagic-rest-client": "^1.0.10"
+  }
+}
