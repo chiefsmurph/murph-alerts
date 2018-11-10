@@ -1,22 +1,40 @@
 
 const hitRCP = require('./hitRCP');
-let lastHit;
+const hit581 = require('./hit581');
 const alertChange = require('./alertChange');
-const objEqual = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
+
+class IntervalChecker {
+    constructor({ name, fn, timeout = 5000 }) {
+        const objEqual = (obj1, obj2) => JSON.stringify(obj1) === JSON.stringify(obj2);
+        this.lastValue = null;
+        setInterval(async() => {
+            const hit = await fn();
+            console.log(new Date().toLocaleTimeString());
+            console.log(hit);
+            console.log();
+            if (!objEqual(hit, this.lastValue)) {
+                alertChange({
+                    name,
+                    curVal: hit, 
+                    prevValue: this.lastValue
+                });
+            }
+            this.lastValue = hit;
+         }, timeout);
+    }
+}
 
 (async () => {
 
-     setInterval(async() => {
+    const toRun = [
+        {
+            name: 'RCP\'s President Trump Job Approval',
+            fn: hitRCP,
+        },
+    ];
 
-        const hit = await hitRCP();
-        console.log(new Date().toLocaleTimeString());
-        console.log(hit);
-        console.log();
-        if (!objEqual(hit, lastHit)) {
-            alertChange(hit, lastHit);
-        }
-        lastHit = hit;
-
-     }, 3000)
+    toRun.forEach(run => {
+        new IntervalChecker(run);
+    });
 
 })();

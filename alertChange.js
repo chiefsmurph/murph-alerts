@@ -10,13 +10,13 @@ const allEmails = [
     '9254081895@msg.fi.google.com'
 ];
 
-module.exports = async (curVal, prevVal) => {
+module.exports = async ({ name, curVal, prevVal }) => {
 
     const sendAlertsToSingleNumber = async email => {
-        const sendToNumber = body => sendEmail('RCP Alerts', body, email);
+        const sendToNumber = body => sendEmail('Murph-Alerts', body, email);
     
         const messages = [
-            'The RCP value has changed for President Trump Job Approval',
+            `New value for ${name}`,
             `CURRENT VALUE\n----------------\n${templateObj(curVal)}`,
             `PREVIOUS VALUE\n----------------\n${templateObj(prevVal)}`,
         ];

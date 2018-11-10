@@ -13,6 +13,7 @@ module.exports = async () => {
 
     const $ = await rp(options)
     const getTdText = i => $('.rcpAvg td').eq(i).text();
+    console.log('hit')
     return {
         date: getTdText(1),
         approve: Number(getTdText(3)),
