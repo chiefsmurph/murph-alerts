@@ -3,7 +3,10 @@
 const puppeteer = require('puppeteer');
 module.exports = async () => {
 
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+        headless: false,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+     });
 
     const page = await browser.newPage();
     await page.goto('https://projects.fivethirtyeight.com/trump-approval-ratings/', { waitUntil: 'load'});
