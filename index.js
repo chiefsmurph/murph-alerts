@@ -1,7 +1,7 @@
 
-const hitRCP = require('./hitRCP');
-const hit581 = require('./hit581');
-const alertChange = require('./alertChange');
+const hitRCP = require('./alerts/RCP');
+const hit581 = require('./alerts/581');
+const alertChange = require('./alert-change');
 
 class IntervalChecker {
     constructor({ name, fn, secondsTimeout = 5 }) {
@@ -10,7 +10,7 @@ class IntervalChecker {
         setInterval(async() => {
             const hit = await fn();
             console.log(new Date().toLocaleTimeString(), '--', name);
-            if (!objEqual(hit, this.lastValue)) {
+            if (this.lastValue && !objEqual(hit, this.lastValue)) {
                 alertChange({
                     name,
                     curVal: hit, 
@@ -32,11 +32,11 @@ class IntervalChecker {
             fn: hitRCP,
             secondsTimeout: 25
         },
-        // {
-        //     name: '581\'s President Trump Job Approval',
-        //     fn: hit581,
-        //     secondsTimeout: 30
-        // },
+        {
+            name: '581\'s President Trump Job Approval',
+            fn: hit581,
+            secondsTimeout: 30
+        },
     ];
 
     toRun.forEach(run => {
