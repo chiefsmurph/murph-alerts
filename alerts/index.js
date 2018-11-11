@@ -1,5 +1,5 @@
-const hitRCP = require('./alerts/hit-RCP');
-const hit581 = require('./alerts/hit-581');
+const hitRCP = require('./hit-RCP');
+const hit581 = require('./hit-581');
 
 module.exports = [
     {

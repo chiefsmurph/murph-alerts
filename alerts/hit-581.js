@@ -14,11 +14,11 @@ const hit581 = async () => {
     const data = await page.evaluate(function() {
         return {
             timestamp: document.querySelector('.timestamp').textContent,
-            approve: Number(document.querySelector('.approve .val').textContent),
-            disapprove: Number(document.querySelector('.disapprove .val').textContent),
+            approve: Number(document.querySelector('.approve .val').textContent) + '%',
+            disapprove: Number(document.querySelector('.disapprove .val').textContent) + '%',
         };
     });
-    console.log({ data });
+    // console.log({ data });
     await instance.exit();
     return data;
 };

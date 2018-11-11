@@ -15,8 +15,8 @@ module.exports = async () => {
     const getTdText = i => $('.rcpAvg td').eq(i).text();
     return {
         date: getTdText(1),
-        approve: Number(getTdText(3)),
-        disapprove: Number(getTdText(4)),
-        spread: Number(getTdText(5))
+        approve: Number(getTdText(3)) + '%',
+        disapprove: Number(getTdText(4)) + '%',
+        spread: Number(getTdText(5)) + '%'
     };
 };
