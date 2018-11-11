@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "pm2 start index.js --name murph-alerts"
   },
   "repository": "git+https://github.com/chiefsmurph/my-brothers-pipedream.git",
   "author": "John Murphy <chiefsmurph@gmail.com>",

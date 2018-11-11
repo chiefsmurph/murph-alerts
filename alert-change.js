@@ -16,7 +16,7 @@ module.exports = async ({ name, curVal, prevVal }) => {
         const messages = [
             `New value for ${name}`,
             `CURRENT VALUE\n----------------\n${templateObj(curVal)}`,
-            `PREVIOUS VALUE\n----------------\n${templateObj(prevVal)}`,
+            ...prevVal && [`PREVIOUS VALUE\n----------------\n${templateObj(prevVal)}`],
         ];
         
         for (let m of messages) {
