@@ -1,18 +1,17 @@
 
-const rp = require('request-promise');
-const cheerio = require('cheerio');
 
+const puppeteer = require('puppeteer');
 module.exports = async () => {
 
-    const options = {
-        uri: 'https://projects.fivethirtyeight.com/trump-approval-ratings/',
-        transform: function (body) {
-            return cheerio.load(body);
-        }
-    };
+    const browser = await puppeteer.launch({ headless: true });
 
-    const $ = await rp(options)
-    const text = $('script')[0].text();
-    const str = text.substr(text.indexOf('{'), text.indexOf('}'));
-    console.log(JSON.parse(str));
+    const page = await browser.newPage();
+    await page.goto('https://projects.fivethirtyeight.com/trump-approval-ratings/', { waitUntil: 'load'});
+    const data = await page.evaluate(() => ({
+        timestamp: document.querySelector('.timestamp').textContent,
+        approve: Number(document.querySelector('.approve .val').textContent),
+        disapprove: Number(document.querySelector('.disapprove .val').textContent),
+    }));
+    await browser.close();
+    return data;
 };

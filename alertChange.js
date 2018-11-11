@@ -21,9 +21,9 @@ module.exports = async ({ name, curVal, prevVal }) => {
             `PREVIOUS VALUE\n----------------\n${templateObj(prevVal)}`,
         ];
         
-        for (let m of messages) {
-            await sendToNumber(m);
-        }
+        // for (let m of messages) {
+        //     await sendToNumber(m);
+        // }
     
     };
 
