@@ -1,7 +1,6 @@
 
-const hitRCP = require('./alerts/RCP');
-const hit581 = require('./alerts/581');
 const alertChange = require('./alert-change');
+const alerts = require('./alerts');
 
 class IntervalChecker {
     constructor({ name, fn, secondsTimeout = 5 }) {
@@ -26,20 +25,7 @@ class IntervalChecker {
 
 (async () => {
 
-    const toRun = [
-        {
-            name: 'RCP\'s President Trump Job Approval',
-            fn: hitRCP,
-            secondsTimeout: 25
-        },
-        {
-            name: '581\'s President Trump Job Approval',
-            fn: hit581,
-            secondsTimeout: 30
-        },
-    ];
-
-    toRun.forEach(run => {
+    alerts.forEach(run => {
         new IntervalChecker(run);
     });
 
