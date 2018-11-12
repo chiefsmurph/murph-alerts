@@ -30,7 +30,7 @@ class IntervalChecker {
         {
             name: 'RCP\'s President Trump Job Approval',
             fn: hitRCP,
-            secondsTimeout: 10
+            secondsTimeout: 25
         },
         // {
         //     name: '581\'s President Trump Job Approval',
