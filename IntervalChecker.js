@@ -14,7 +14,7 @@ class IntervalChecker {
         this.intervalTimeout = setInterval(
             () => this.hit(), 
             this.secondsTimeout * 1000
-         );
+        );
     }
     async hit() {
         const hit = await this.fn();
@@ -24,8 +24,8 @@ class IntervalChecker {
         if (this.lastValue && !objEqual(hit, this.lastValue)) {
             const changeObj = {
                 name: this.name,
-                curVal: hit, 
-                prevValue: this.lastValue,
+                curVal: hit,
+                prevVal: this.lastValue,
             };
             console.log('ALERT!', changeObj);
             this.onAlert(changeObj);
