@@ -18,6 +18,7 @@ class IntervalChecker {
     }
     async hit() {
         const hit = await this.fn();
+        if (!hit) return;
         console.log(new Date().toLocaleTimeString(), '--', this.name);
         console.log(hit);
         if (this.lastValue && !objEqual(hit, this.lastValue)) {
@@ -28,9 +29,7 @@ class IntervalChecker {
             });
         }
         console.log();
-        if (hit) {
-            this.lastValue = hit;
-        }
+        this.lastValue = hit;
     }
     stop() {
         clearInterval(this.intervalTimeout);
