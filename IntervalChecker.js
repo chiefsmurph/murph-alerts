@@ -22,11 +22,13 @@ class IntervalChecker {
         console.log(new Date().toLocaleTimeString(), '--', this.name);
         console.log(hit);
         if (this.lastValue && !objEqual(hit, this.lastValue)) {
-            this.onAlert({
+            const changeObj = {
                 name: this.name,
                 curVal: hit, 
                 prevValue: this.lastValue,
-            });
+            };
+            console.log('ALERT!', changeObj);
+            this.onAlert(changeObj);
         }
         console.log();
         this.lastValue = hit;
