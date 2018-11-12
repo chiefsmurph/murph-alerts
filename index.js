@@ -32,11 +32,11 @@ class IntervalChecker {
             fn: hitRCP,
             secondsTimeout: 10
         },
-        {
-            name: '581\'s President Trump Job Approval',
-            fn: hit581,
-            secondsTimeout: 30
-        },
+        // {
+        //     name: '581\'s President Trump Job Approval',
+        //     fn: hit581,
+        //     secondsTimeout: 30
+        // },
     ];
 
     toRun.forEach(run => {
