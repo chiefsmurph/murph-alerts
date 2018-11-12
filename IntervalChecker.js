@@ -11,13 +11,16 @@ class IntervalChecker {
         this.start();
     }
     start() {
-        this.intervalTimeout = setInterval(() => this.hit(), this.secondsTimeout * 1000);
+        this.intervalTimeout = setInterval(
+            () => this.hit(), 
+            this.secondsTimeout * 1000
+         );
     }
     async hit() {
         const hit = await this.fn();
         console.log(new Date().toLocaleTimeString(), '--', this.name);
         console.log(hit);
-        if (!objEqual(hit, this.lastValue)) {
+        if (this.lastValue && !objEqual(hit, this.lastValue)) {
             this.onAlert({
                 name: this.name,
                 curVal: hit, 
@@ -25,7 +28,9 @@ class IntervalChecker {
             });
         }
         console.log();
-        this.lastValue = hit;
+        if (hit) {
+            this.lastValue = hit;
+        }
     }
     stop() {
         clearInterval(this.intervalTimeout);

@@ -10,6 +10,6 @@ module.exports = [
     {
         name: '581\'s President Trump Job Approval',
         fn: hit581,
-        secondsTimeout: 30
+        secondsTimeout: 50
     }
 ];
